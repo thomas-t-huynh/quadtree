@@ -1,16 +1,37 @@
-import { createCanvas } from 'p5'
-import { Rectangle, QuadTree } from './quadtree'
+import p5 from 'p5'
+import { Rectangle, QuadTree, Point } from './quadtree'
+import './style.css'
 
-function setup() {
-    createCanvas(400, 400)
-    let boundary = new Rectangle(200, 200, 200, 200)
-    let qt = new QuadTree(boundary, 4)
+const div = document.createElement('div')
+const h1 = document.createElement('h1')
 
-    for (let i = 0; i < 5; i++) {
-        let p = new Point(random(width), random(height))
-        qt.insert(p)
-    }
-    console.log(qt)
+h1.innerHTML = 'QUAD TREE'
+
+div.appendChild(h1)
+
+div.classList.add('title')
+
+document.body.appendChild(div);
+
+const height = 200
+const width = 200
+
+function random (n) {
+    return Math.random() * n
 }
 
-setup()
+function s(sketch) {
+    sketch.setup = () => {
+        sketch.createCanvas(400, 400)
+        let boundary = new Rectangle(200, 200, 200, 200)
+        let qt = new QuadTree(boundary, 4)
+        console.log('before',qt)
+        for (let i = 0; i < 5; i++) {
+            let p = new Point(random(width), random(height))
+            qt.insert(p)
+        }
+        console.log('after',qt)
+    }
+}
+
+let myp5 = new p5(s)
