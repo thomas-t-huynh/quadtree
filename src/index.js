@@ -1,6 +1,7 @@
 import p5 from 'p5'
 import { Rectangle, QuadTree, Point } from './quadtree'
 import './style.css'
+import Icon from './assets/react.png';
 
 const div = document.createElement('div')
 const h1 = document.createElement('h1')
@@ -10,6 +11,11 @@ h1.innerHTML = 'QUAD TREE'
 div.appendChild(h1)
 
 div.classList.add('title')
+
+const myIcon = new Image();
+myIcon.src = Icon;
+
+document.body.appendChild(myIcon);
 
 document.body.appendChild(div);
 

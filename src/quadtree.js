@@ -67,4 +67,16 @@ export class QuadTree {
 
         }
     }
+
+    show() {
+        stroke(255)
+        noFill()
+        rect(this.boundary.x, this.boundary.y, this.w*2, this.h * 2)
+        if (this.dividied) {
+            this.nw.show()
+            this.ne.show()
+            this.sw.show()
+            this.se.show()
+        }
+    }
 }
